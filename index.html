@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #ffda7b, #ffe6a7);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.7);
+  transform: rotate(45deg);
+  filter: blur(1px);
+  animation: float 10s linear infinite;
+}
+.heart::before, .heart::after {
+  content:"";
+  position:absolute;
+  width: 20px; height:20px;
+  background: rgba(255,255,255,0.7);
+  border-radius:50%;
+}
+.heart::before { top: -10px; }
+.heart::after { left: -10px; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(45deg); opacity:0.8; }
+  100% { transform: translateY(-120vh) rotate(45deg); opacity:0; }
+}
+
+/* Luxury card style */
+.card {
+  background: rgba(255,255,255,0.15);
+  border-radius: 25px;
+  padding: 50px 40px;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.3);
+  border: 2px solid rgba(255,255,255,0.3);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn { from {opacity:0; transform: scale(0.9);} to {opacity:1; transform: scale(1);} }
+
+h1 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: heartbeat 1.8s infinite;
+}
+@keyframes heartbeat { 0%,100% {transform:scale(1);} 50% {transform:scale(1.08);} }
+
+p {
+  color: rgba(255,255,255,0.95);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 35px;
+  position: relative;
+  height: 70px;
+}
+
+button {
+  padding: 14px 36px;
+  font-size: 16px;
+  border-radius: 35px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.35s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#yesBtn {
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+  color: white;
+}
+
+#yesBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(255,77,109,0.5);
+}
+
+#noBtn {
+  background: rgba(0,0,0,0.35);
+  color: white;
+  position: absolute;
+}
+
+/* RESULT CARD */
+#result {
+  display: none;
+  width: 800px;
+  padding: 40px;
+}
+
+.result-content {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 25px;
+  padding: 30px;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.3);
+}
+
+.photo img {
+  width: 300px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  animation: fadeIn 1.2s ease;
+}
+
+.message {
+  flex: 1;
+  color: rgba(255,255,255,0.95);
+  text-align: left;
+}
+
+.message h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.message p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  #result { width: 90%; }
+  .result-content { flex-direction: column; text-align: center; }
+  .message { text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST PAGE QUESTION -->
+<div class="card" id="question">
+  <h1>Miss Norraine Joy, Will you be my Valentine? 💖</h1>
+  <p>Pangutan-on gyapun taka kay basin nyag dika mosugot nabuang nah.</p>
+
+  <div class="buttons">
+    <button id="yesBtn">Oo Carlb 💕</button>
+    <button id="noBtn">Dili! 💔</button>
+  </div>
+</div>
+
+<!-- RESULT PAGE -->
+<div class="card" id="result">
+  <div class="result-content">
+    <div class="photo">
+      <img src="img.jpg" alt="Our Photo">
+    </div>
+    <div class="message">
+      <h1>Happy 6th Valentine's Day Babe💘</h1>
+      <p>You brighten my days in ways I can't fully capture in words.</p>
+      <p>Your smile, presence, and kindness make my heart happier.</p>
+      <p>This Valentine’s Day, I celebrate you, us, and every special moment.</p>
+      <p>Iloveyoubigtime 💖.</p>
+      <p style="font-weight:600;">Happy Valentine’s Day 💖 — Carlb.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const question = document.getElementById("question");
+const result = document.getElementById("result");
+
+/* NO button moves randomly */
+function moveNoButton() {
+  const parentRect = question.getBoundingClientRect();
+  const maxX = parentRect.width - noBtn.offsetWidth - 20;
+  const maxY = parentRect.height - noBtn.offsetHeight - 20;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("click", () => {
+  alert("Diko mosugot 😌 Try again.");
+  moveNoButton();
+});
+
+/* YES click */
+yesBtn.addEventListener("click", () => {
+  alert("Ayiee ganahan sd! 💕");
+  question.style.display = "none";
+  result.style.display = "block";
+});
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 6 + 6) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 12000);
+}, 600);
+</script>
+</body>
+</html>
